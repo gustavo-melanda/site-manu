@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💌 Tela de Bloqueio 💌</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffaaaa, hsl(0, 87%, 65%), #ff0000);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+
+  
+        /* 🌸 Fundo com imagem + gradiente */
+        background: 
+          linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
+          url('Manu.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      
+    }
+
+    h1 {
+      font-size: 2.5em;
+      animation: fadeInDown 2s ease;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      animation: fadeIn 3s ease;
+    }
+
+    input {
+      padding: 10px 25px;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+      font-size: 1.1em;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      transform: scale(1.05);
+    }
+
+    button {
+      margin-top: 20px;
+      background: white;
+      color: #c71585;
+      border: none;
+      padding: 10px 30px;
+      border-radius: 25px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff69b4;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    #mensagem {
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+
+    /* 💖 Corações animados de fundo */
+    .heart {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 20px;
+      animation: flutuar 6s linear infinite;
+    }
+
+    @keyframes flutuar {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ✨ Animação de transição */
+    .fade-out {
+      animation: fadeOut 1.5s forwards;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; transform: scale(1.1); }
+    }
+    
+  </style>
+</head>
+<body>
+
+  <h1>💌 Tela de Bloqueio 💌</h1>
+  <p>Oque você é minha? 💕</p>
+
+  <input type="password" id="codigo" placeholder="Digite o código secreto">
+  <button onclick="verificarCodigo()">Entrar 💖</button>
+
+  <p id="mensagem"></p>
+
+  <!-- 🌹 Música suave de fundo -->
+  <audio autoplay loop>
+    <source src="musiquinha.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Código secreto (troque pelo seu 💘)
+    const codigoCorreto = "esquisitinha"; 
+
+    function verificarCodigo() {
+      const input = document.getElementById("codigo").value.trim();
+      const msg = document.getElementById("mensagem");
+
+      if (input === codigoCorreto) {
+        msg.innerHTML = "✨ Até que você é espertinha amor! Entrando... 💞";
+        msg.style.color = "#00ffcc";
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = "pg.html"; // redireciona pra página romântica
+        }, 1500);
+      } else {
+        msg.innerHTML = "❌ Tá errado pateta, olha o animalzinho do ttk (Diminutivo) kkkkkk 😘";
+        msg.style.color = "#ffdddd";
+      }
+    }
+
+    // 💖 Criar corações flutuando
+    function criarCoracoes() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      heart.innerHTML = "💖";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(criarCoracoes, 400);
+  </script>
+
+</body>
+</html>
+
+
